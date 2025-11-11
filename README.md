@@ -1,187 +1,175 @@
-
 ```markdown
-# 🚗 AI-Powered Vehicle Detection and Traffic Signal detection System for Ubuntu
+# 🚦 AI Vehicles & Traffic Signal Detection System (Ubuntu Based)
 
-[![Python Version](https://img.shields.io/badge/Python-3.8%2B-blue?style=for-the-badge&logo=python)](https://www.python.org/)
-[![Flask Version](https://img.shields.io/badge/Flask-2.3.3-green?style=for-the-badge&logo=flask)](https://flask.palletsprojects.com/)
-[![YOLOv8](https://img.shields.io/badge/YOLOv8-8.1.25-FFA500?style=for-the-badge&logo=ultralytics)](https://ultralytics.com/)
-[![Ubuntu](https://img.shields.io/badge/Ubuntu-22.04%2B-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)](https://ubuntu.com/)
-[![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](https://opensource.org/licenses/MIT)
+[![Python](https://img.shields.io/badge/Python-3.8+-blue?style=for-the-badge&logo=python)](https://www.python.org/)
+[![Flask](https://img.shields.io/badge/Flask-2.3.3-black?style=for-the-badge&logo=flask)](https://flask.palletsprojects.com/)
+[![YOLOv8](https://img.shields.io/badge/YOLOv8-Object%20Detection-orange?style=for-the-badge&logo=ultralytics)](https://ultralytics.com/)
+[![Ubuntu](https://img.shields.io/badge/Ubuntu-22.04+-E95420?style=for-the-badge&logo=ubuntu)](https://ubuntu.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)
 
-An intelligent, real-time object detection system for an automated car, optimized for **Ubuntu**. This project leverages the power of **YOLOv8**, **Flask**, and **Arduino** to create a smart vehicle that can autonomously detect cars, bikes, trucks, and traffic signals from a live camera feed, and react to its environment.
+An **AI-powered real-time traffic environment detection system** that identifies vehicles (car, bike, bus, truck) and traffic signals using a **live camera feed**.  
+The system can operate in both **manual** and **autonomous drive modes**, communicating with an **Arduino-based robot car** to make smart movement decisions.
 
----
 
-## 🎬 Demo
-
-*See the system in action! Detecting vehicles and controlling the car in real-time.*
-
-> **Tip:** Replace the placeholder image below with your own GIF or video for maximum impact!
-> `![Demo GIF](assets/demo.gif)`
-
-![Main Dashboard Screenshot](assets/screenshot.png)
-
----
-
-## ✨ Key Features
-
-| Feature | Description |
-| :--- | :--- |
-| 🚗 **Real-Time Detection** | Live object detection from a camera feed using the state-of-the-art YOLOv8 model. |
-| 📁 **File Analysis** | Upload images or videos for on-demand object detection and analysis. |
-| 🕹️ **Manual Control** | Take full control with a web-based interface to drive the car (forward, turn, stop). |
-| 🤖 **Autonomous Mode** | Toggle an intelligent mode that automatically stops and turns the car to avoid obstacles. |
-| 📺 **OLED Display Sim** | A real-time simulation of an OLED display showing vital stats and car status. |
-| 🔌 **Arduino Integration** | Seamless communication with an Arduino to control the car's physical motors. |
-| 📏 **Distance Estimation** | Calculates the distance of detected objects for smarter autonomous decisions. |
-
----
-
-## 🛠️ Technology Stack
-
-This project is built with a combination of powerful open-source technologies.
-
-*   **Backend**: `Flask` (Python Web Framework)
-*   **Computer Vision**: `YOLOv8` (Object Detection Model), `OpenCV` (Image Processing)
-*   **Hardware Control**: `PySerial` (Arduino Communication)
-*   **Frontend**: `HTML5`, `CSS3`, `JavaScript`
-
----
-
-## 📁 Project Structure
-
-A clean and organized layout for easy development and contribution.
+assets/demo.gif
 
 ```
-Automated-Car-Detection-System/
-├── .gitignore
-├── README.md
-├── requirements.txt
+
+![Dashboard Preview](assets/screenshot.png)
+
+---
+
+## ✨ Features
+
+| Feature | Details |
+|--------|---------|
+| 🚘 Vehicle Detection | Detects cars, bikes, buses, trucks in real-time. |
+| 🚦 Traffic Signal Detection | Identifies Red / Yellow / Green signals from camera input. |
+| 📡 Live Streaming | View camera feed directly in the web dashboard. |
+| 🎮 Manual Control Mode | Control the robot car (Forward, Back, Turn Left/Right). |
+| 🤖 Autonomous Driving Mode | System automatically slows/stops the car based on obstacles & signals. |
+| 🔌 Arduino Communication | Uses **PySerial** to send movement commands to the car. |
+| 🎛 OLED Display Simulation | Shows state feedback such as speed, mode, and alerts. |
+
+---
+
+## 🧱 Tech Stack
+
+| Layer | Technology |
+|------|------------|
+| **AI Model** | YOLOv8 |
+| **Backend** | Flask (Python) |
+| **Video Processing** | OpenCV |
+| **Robot Hardware** | Arduino + Motor Driver |
+| **Frontend** | HTML, CSS, JavaScript |
+
+---
+
+## 📂 Project Structure
+
+```
+
+AI-Vehicles-Detection-System-traffic-signals-detection/
 ├── app.py
-├── assets/
-│   ├── demo.gif
-│   └── screenshot.png
-├── templates/
-│   ├── index.html
-│   └── live.html
+├── requirements.txt
+├── README.md
 ├── models/
 │   ├── best.pt
 │   └── last.pt
+├── templates/
+│   ├── index.html
+│   └── live.html
+├── assets/
+│   ├── screenshot.png
+│   └── demo.gif
 └── arduino/
-    └── update_car/
-        └── update_car.ino
-```
+└── update_car/
+└── update_car.ino
+
+````
 
 ---
 
-## 🚀 Getting Started on Ubuntu
+## 🛠️ Installation (Ubuntu)
 
-Follow these simple steps to get a copy of the project up and running on your Ubuntu machine.
-
-### 1. Install System Dependencies
-
-First, open a terminal (`Ctrl+Alt+T`) and install Python and pip, along with other essential tools.
-
+### 1️⃣ Install System Tools
 ```bash
 sudo apt update
 sudo apt install python3-pip python3-venv git
-```
+````
 
-### 2. Grant Camera Permissions (Important!)
-
-To allow the application to access your USB camera, add your user to the `video` group. You will need to log out and log back in for this to take effect.
+### 2️⃣ Allow Camera Access
 
 ```bash
 sudo usermod -a -G video $USER
 ```
 
-### 3. Clone the Repository
+Logout & login again.
+
+### 3️⃣ Clone Project
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/Automated-Car-Detection-System.git
-cd Automated-Car-Detection-System
+git clone https://github.com/Shahzadabbas28/AI-Vehicles-Detection-System-traffic-signals-detection.git
+cd AI-Vehicles-Detection-System-traffic-signals-detection
 ```
 
-### 4. Set Up a Virtual Environment
-
-Using a virtual environment isolates project dependencies and is a best practice.
+### 4️⃣ Create Virtual Environment
 
 ```bash
-# Create a virtual environment
 python3 -m venv venv
-
-# Activate it
 source venv/bin/activate
 ```
-*Your terminal prompt should now start with `(venv)`.*
 
-### 5. Install Python Dependencies
-
-Install all the necessary Python packages from the `requirements.txt` file.
+### 5️⃣ Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 6. Configure Hardware & Software
+### 6️⃣ Configure Model + Arduino Port
 
-1.  **Place Model Files**: Add your pre-trained `best.pt` and `last.pt` files into the `models/` directory.
-2.  **Find Your Arduino Port**: Connect your Arduino and run this command to find its serial port.
-    ```bash
-    ls /dev/ttyACM*
-    ```
-    The output is likely `/dev/ttyACM0`. If not, use the port that appears.
-3.  **Update Paths in `app.py`**: Open `app.py` with a text editor (like `nano` or `gedit`) and modify the following variables.
-    ```bash
-    nano app.py
-    ```
-    ```python
-    # Example: Update this path to where your model is located
-    MODEL_PATH = '/home/youruser/Automated-Car-Detection-System/models/best.pt'
+Find Arduino port:
 
-    # Update this to the Arduino port you found in the previous step
-    ARDUINO_PORT = '/dev/ttyACM0'
-    ```
+```bash
+ls /dev/ttyACM*
+```
 
-### 7. Run the Application
+Edit in `app.py`:
 
-Launch the Flask server.
+```python
+MODEL_PATH = './models/best.pt'
+ARDUINO_PORT = '/dev/ttyACM0'
+```
+
+### 7️⃣ Run Application
 
 ```bash
 python app.py
 ```
 
-Now, open your web browser and navigate to **`http://localhost:5000`**.
+Open in browser:
+
+```
+http://localhost:5000
+```
 
 ---
 
-## 🎮 How to Use
+## 🎮 Usage
 
-1.  **File Upload (`/`)**: Upload an image or video to get static detection results.
-2.  **Live Detection (`/live`)**:
-    *   Click **"Start Camera"** to begin the real-time video stream.
-    *   Use the **Manual Control** buttons to drive the car yourself.
-    *   Toggle **"Autonomous Mode"** to enable smart obstacle avoidance.
+| Page    | Function                                          |
+| ------- | ------------------------------------------------- |
+| `/`     | Upload image/video for detection                  |
+| `/live` | Live camera detection + manual & auto car control |
+
+**Autonomous mode automatically:**
+
+* Stops at **Red** signal
+* Slows when vehicle is **too close**
+* Turns or stops based on obstacle detection
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+Contributions are welcome. Fork the repo → create a branch → submit PR.
 
 ---
 
-## 📝 License
+## 📜 License
 
-This project is licensed under the MIT License. See the `LICENSE` file for more details.
+Distributed under the **MIT License**. See **LICENSE** for details.
 
 ---
 
-## 📧 Contact
+## 📬 Contact
 
-Whatsapp: +92300-5704178
-Email - shahzadabbas4178@gmail.com
+| Method      | Details                                                                                                                                                                              |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| WhatsApp    | +92 300 5704178                                                                                                                                                                      |
+| Email       | [shahzadabbas4178@gmail.com](mailto:shahzadabbas4178@gmail.com)                                                                                                                      |
+| GitHub Repo | [https://github.com/Shahzadabbas28/AI-Vehicles-Detection-System-traffic-signals-detection](https://github.com/Shahzadabbas28/AI-Vehicles-Detection-System-traffic-signals-detection) |
 
+---
 
-Project Link: https://github.com/Shahzadabbas28/AI-Vehicles-Detection-System-traffic-signals-detection
-```
+⭐ **If you like this project, please give it a star on GitHub — it motivates further updates!**
